@@ -13,3 +13,11 @@ for the typical sqlalchemy functionality
 
 NOTE: the sqlalchemy table objects are setup to use sqlalchemy expression language (or core, NOT the ORM). There is currently no way to
 switch to ORM behavior (at least, I don't think there is), though this could be added
+
+Getting Started:
+
+It is simple to use: if you just want a SQL server connection engine, call generate_sql_connection with your desired server and database names. You can also pass uid and pwd as optional keyword arguments. If uid and pwd are not provided, the server connection will be made using default Windows Authentication.
+
+If you want to take advantage of the configuration class, simply call DatabaseConfig, again with server, database, and optional credentials, to instantiate the connection class. The engine attribute will be set for you (self.engine).
+
+Then, call set_view or set_table to reflect a view/table from the database to a sqlalchemy core table object. You can specify the attribute name of the table that will be set to the class, otherwise it will default to the view/table name. There are also other methods that allow you to list all views, tables, or schema associated with self.engine. Support is also provided for different schema.
